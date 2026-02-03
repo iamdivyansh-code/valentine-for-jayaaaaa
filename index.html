@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Jaya 💖</title>
-<style>
-  body,html {margin:0;padding:0;width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;}
-  body {background:linear-gradient(135deg,#ffc1cc,#ffebee);display:flex;align-items:center;justify-content:center;text-align:center;}
-  .message{font-size:1.5rem;color:white;min-height:130px;}
-  button{padding:14px 28px;border:none;border-radius:30px;font-size:1.1rem;cursor:pointer;margin:10px;}
-  #yesBtn{background:#ff3366;color:white;}
-  #noBtn{background:white;color:#ff3366;position:relative;}
-  .final{display:none;color:white;font-size:1.7rem;}
-  .heart{position:absolute;font-size:24px;animation:float 3s linear forwards;pointer-events:none;}
-  @keyframes float{to{transform:translateY(-200px) scale(1.4);opacity:0;}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Jaya 💖</title>
+  <style>
+    body,html {margin:0;padding:0;width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;}
+    body {background:linear-gradient(135deg,#ffc1cc,#ffebee);display:flex;align-items:center;justify-content:center;text-align:center;}
+    .message{font-size:1.5rem;color:white;min-height:140px;}
+    button{padding:14px 28px;border:none;border-radius:30px;font-size:1.1rem;cursor:pointer;margin:10px;}
+    #yesBtn{background:#ff3366;color:white;}
+    #noBtn{background:white;color:#ff3366;position:relative;}
+    .final{display:none;color:white;font-size:1.7rem;}
+    .heart{position:absolute;font-size:24px;animation:float 3s linear forwards;pointer-events:none;}
+    @keyframes float{to{transform:translateY(-200px) scale(1.4);opacity:0;}}
+  </style>
 </head>
 <body>
 
@@ -36,63 +36,63 @@
 </div>
 
 <script>
-const text = "Hi Jayaaaaa 💖\nWill you be my Valentine for 2026\nand till dal-chawal for the rest of our life?";
-let i = 0;
-function typeText(){
-  if(i < text.length){
-    document.getElementById("message").innerHTML += text[i] === "\n" ? "<br>" : text[i];
-    i++;
-    setTimeout(typeText,60);
+  // Text typing
+  const text = "Hi Jayaaaaa 💖\nWill you be my Valentine for 2026\nand till dal-chawal for the rest of our life?";
+  let i = 0;
+  function typeText(){
+    if(i < text.length){
+      document.getElementById("message").innerHTML += text[i] === "\n" ? "<br>" : text[i];
+      i++;
+      setTimeout(typeText,60);
+    }
   }
-}
-typeText();
+  typeText();
 
-// Fix NO button so it just moves away
-const noBtn = document.getElementById("noBtn");
-noBtn.addEventListener("mouseover", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
+  // No button moves away
+  const noBtn = document.getElementById("noBtn");
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
 
-function moveNo(e){
-  // prevent triggering other clicks
-  e.stopPropagation();
-  const x = Math.random()*(window.innerWidth-noBtn.offsetWidth);
-  const y = Math.random()*(window.innerHeight-noBtn.offsetHeight);
-  noBtn.style.left = x+"px";
-  noBtn.style.top = y+"px";
-}
-
-// YES button
-const yesBtn = document.getElementById("yesBtn");
-yesBtn.addEventListener("click", () => {
-  animateHearts();
-  document.getElementById("message").style.display = "none";
-  yesBtn.style.display = "none";
-  noBtn.style.display = "none";
-  document.getElementById("final").style.display = "block";
-  loadYouTubeMusic();
-});
-
-// Hearts
-function animateHearts(){
-  for(let j=0;j<30;j++){
-    const h = document.createElement("div");
-    h.className="heart";
-    h.innerText="💖";
-    h.style.left = Math.random()*window.innerWidth + "px";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),3000);
+  function moveNo(e){
+    e.stopPropagation();
+    const x = Math.random()*(window.innerWidth-noBtn.offsetWidth);
+    const y = Math.random()*(window.innerHeight-noBtn.offsetHeight);
+    noBtn.style.left = x+"px";
+    noBtn.style.top = y+"px";
   }
-}
 
-// Load YouTube embed for the music
-function loadYouTubeMusic(){
-  const ytHTML = `
-    <iframe width="0" height="0"
-      src="https://www.youtube.com/embed/Tr8YjdaBLDQ?autoplay=1&controls=0&loop=1&playlist=Tr8YjdaBLDQ"
-      frameborder="0" allow="autoplay; encrypted-media">
-    </iframe>`;
-  document.getElementById("ytPlayer").innerHTML = ytHTML;
-}
+  // Yes logic
+  const yesBtn = document.getElementById("yesBtn");
+  yesBtn.addEventListener("click", () => {
+    animateHearts();
+    document.getElementById("message").style.display = "none";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    document.getElementById("final").style.display = "block";
+    loadYouTubeMusic();
+  });
+
+  // Hearts
+  function animateHearts(){
+    for(let j=0;j<25;j++){
+      const h = document.createElement("div");
+      h.className="heart";
+      h.innerText="💖";
+      h.style.left = Math.random()*window.innerWidth + "px";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),3000);
+    }
+  }
+
+  // Load YouTube embed for the song
+  function loadYouTubeMusic(){
+    const iframeHTML = `
+      <iframe width="0" height="0"
+        src="https://www.youtube.com/embed/Aft5CALdRv8?autoplay=1&controls=0&loop=1&playlist=Aft5CALdRv8"
+        frameborder="0" allow="autoplay; encrypted-media">
+      </iframe>`;
+    document.getElementById("ytPlayer").innerHTML = iframeHTML;
+  }
 </script>
 
 </body>
